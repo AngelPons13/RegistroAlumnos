@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Alumnos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registro de Alumnos</h2>
+        <form id="alumnoForm">
+            <input type="text" id="nombre" placeholder="Nombre del alumno">
+            <input type="text" id="materias" placeholder="Materias que lleva">
+            <input type="number" id="edad" placeholder="Edad">
+            <input type="text" id="salon" placeholder="Salón">
+            <select id="debe">
+                <option value="si">Debe alguna materia</option>
+                <option value="no">No debe ninguna materia</option>
+            </select>
+            <button type="button" onclick="agregarAlumno()">Agregar Alumno</button>
+        </form>
+        <table id="alumnosTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Materias</th>
+                    <th>Edad</th>
+                    <th>Salón</th>
+                    <th>Debe alguna materia</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function agregarAlumno() {
+            var nombre = document.getElementById("nombre").value;
+            var materias = document.getElementById("materias").value;
+            var edad = document.getElementById("edad").value;
+            var salon = document.getElementById("salon").value;
+            var debe = document.getElementById("debe").value;
+
+            var table = document.getElementById("alumnosTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+
+            cell1.innerHTML = nombre;
+            cell2.innerHTML = materias;
+            cell3.innerHTML = edad;
+            cell4.innerHTML = salon;
+            cell5.innerHTML = debe;
+
+            document.getElementById("nombre").value = "";
+            document.getElementById("materias").value = "";
+            document.getElementById("edad").value = "";
+            document.getElementById("salon").value = "";
+            document.getElementById("debe").value = "si";
+        }
+    </script>
+</body>
+</html>
